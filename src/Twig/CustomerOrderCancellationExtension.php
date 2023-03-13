@@ -14,8 +14,11 @@ declare(strict_types=1);
 namespace Sylius\CustomerOrderCancellationPlugin\Twig;
 
 use Sylius\CustomerOrderCancellationPlugin\Checker\CustomerOrderCancellationCheckerInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\ExtensionInterface;
+use Twig\TwigFunction;
 
-final class CustomerOrderCancellationExtension extends \Twig_Extension
+final class CustomerOrderCancellationExtension extends AbstractExtension implements ExtensionInterface
 {
     /** @var CustomerOrderCancellationCheckerInterface */
     private $customerOrderCancellationChecker;
@@ -27,6 +30,6 @@ final class CustomerOrderCancellationExtension extends \Twig_Extension
 
     public function getFunctions(): array
     {
-        return [new \Twig_SimpleFunction('can_customer_cancel_order', [$this->customerOrderCancellationChecker, 'canBeCancelled'])];
+        return [new TwigFunction('can_customer_cancel_order', [$this->customerOrderCancellationChecker, 'canBeCancelled'])];
     }
 }
