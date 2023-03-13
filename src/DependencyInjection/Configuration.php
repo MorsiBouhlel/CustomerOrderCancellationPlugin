@@ -14,9 +14,6 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('sylius_customer_order_cancellation');
-
-        return $treeBuilder;
+        return new TreeBuilder('monsieurbiz_sylius_menu');
     }
 }
